@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Portfolio Design System - Elite Data Science Portfolio */
+
+@layer base {
+  :root {
+    /* Base Colors */
+    --background: 218 27% 6%;     /* Deep slate blue-gray */
+    --foreground: 214 32% 91%;    /* Light gray */
+    
+    /* Card System */
+    --card: 220 17% 11%;          /* Dark card background */
+    --card-foreground: 214 32% 91%;
+    --card-glass: 220 17% 11% / 0.8; /* Glassmorphism */
+    
+    /* Primary Accent - Teal */
+    --primary: 174 76% 40%;       /* Vibrant teal */
+    --primary-foreground: 220 17% 11%;
+    --primary-glow: 174 76% 50%;  /* Brighter teal for glows */
+    
+    /* Secondary Accent - Violet */
+    --secondary: 270 77% 60%;     /* Rich violet */
+    --secondary-foreground: 214 32% 91%;
+    
+    /* Utility Colors */
+    --muted: 220 13% 18%;
+    --muted-foreground: 217 11% 65%;
+    --accent: 174 76% 40%;
+    --accent-foreground: 220 17% 11%;
+    
+    /* Interactive States */
+    --border: 220 13% 18%;
+    --input: 220 13% 18%;
+    --ring: 174 76% 50%;
+    --success: 142 72% 45%;
+    --warning: 43 89% 50%;
+    --destructive: 0 84% 60%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(174 76% 40%), hsl(174 86% 50%));
+    --gradient-secondary: linear-gradient(135deg, hsl(270 77% 60%), hsl(280 87% 70%));
+    --gradient-hero: linear-gradient(135deg, hsl(218 27% 6%), hsl(220 17% 11%));
+    --gradient-glass: linear-gradient(135deg, hsl(220 17% 11% / 0.9), hsl(220 17% 15% / 0.7));
+    
+    /* Shadows & Effects */
+    --shadow-elegant: 0 25px 50px -12px hsl(174 76% 40% / 0.25);
+    --shadow-glow: 0 0 40px hsl(174 76% 50% / 0.4);
+    --shadow-card: 0 8px 32px hsl(220 17% 4% / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Dark theme - default portfolio theme */
+  .dark {
+    /* Keep same values as root for consistent dark theme */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-['Inter',sans-serif] antialiased;
+    background: var(--gradient-hero);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-['Poppins',sans-serif] font-bold;
+  }
+}
+
+@layer components {
+  /* Glass morphism effects */
+  .glass {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.3);
+  }
+  
+  /* Hero button variants */
+  .btn-hero {
+    @apply relative inline-flex items-center justify-center px-8 py-4 font-semibold;
+    @apply rounded-xl border border-primary/20 bg-gradient-to-r from-primary to-primary-glow;
+    @apply text-primary-foreground shadow-lg transition-all duration-300;
+    @apply hover:shadow-[0_0_2rem_hsl(var(--primary-glow)/0.5)] hover:scale-105;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/50;
+  }
+  
+  .btn-outline {
+    @apply relative inline-flex items-center justify-center px-8 py-4 font-semibold;
+    @apply rounded-xl border border-primary/50 bg-transparent text-primary;
+    @apply transition-all duration-300 hover:bg-primary/10 hover:border-primary;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/50;
+  }
+  
+  /* Animated underlines */
+  .animated-underline {
+    @apply relative after:content-[''] after:absolute after:w-full after:scale-x-0;
+    @apply after:h-0.5 after:bottom-0 after:left-0 after:bg-primary;
+    @apply after:origin-bottom-right after:transition-transform after:duration-300;
+    @apply hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+  
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: 0 0 1rem hsl(var(--primary-glow) / 0.3);
+  }
+  
+  /* Skill bars */
+  .skill-bar {
+    @apply relative h-2 bg-muted rounded-full overflow-hidden;
+  }
+  
+  .skill-fill {
+    @apply h-full bg-gradient-to-r from-primary to-primary-glow rounded-full;
+    @apply transition-all duration-1000 ease-out;
+  }
+}
+
+@layer utilities {
+  /* Custom animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-bounce-slow {
+    animation: bounce 2s infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Swiper Styles */
+.projects-swiper .swiper-button-next,
+.projects-swiper .swiper-button-prev {
+  color: hsl(var(--primary));
+}
+
+.projects-swiper .swiper-pagination-bullet {
+  background: hsl(var(--muted));
+}
+
+.projects-swiper .swiper-pagination-bullet-active {
+  background: hsl(var(--primary));
+}
