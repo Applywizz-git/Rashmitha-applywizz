@@ -114,7 +114,7 @@ const Hero = () => {
               <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 border border-border/50 overflow-hidden relative">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center text-muted-foreground">
-                    <img src="../../public/profile-pic.jpg" alt="Profile Photo" />
+                    <img src="/profile-pic.jpg" alt="Profile Photo" />
                     <p className="text-lg font-medium">Rashmitha Pagadala</p>
                     <p className="text-sm">Data Science Professional</p>
                   </div>
